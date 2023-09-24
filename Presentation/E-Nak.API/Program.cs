@@ -1,3 +1,6 @@
+using E_Nak.Persistence;
+using E_Nak.Persistence.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+#region Add Service Registration
+
+builder.Services.AddPersistenceService();
+
+#endregion
 
 var app = builder.Build();
 

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\..\Infrastructure\E-Nak.Persistence\E-Nak.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
