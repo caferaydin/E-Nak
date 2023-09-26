@@ -1,5 +1,4 @@
 ﻿using E_Nak.Application.Abstract;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Nak.API.Controllers

@@ -6,13 +6,7 @@ using E_Nak.Persistence.Context;
 using E_Nak.Persistence.Repositories.Read;
 using E_Nak.Persistence.Repositories.Write;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace E_Nak.Persistence.Extensions
 {
