@@ -29,6 +29,8 @@ namespace E_Nak.Persistence.Extensions
 
             services.AddScoped<IVehicleReadRepository, VehicleReadRepository>();
             services.AddScoped<IVehicleWriteRepository, VehicleWriteRepository>();
+
+
             #endregion
 
         }
