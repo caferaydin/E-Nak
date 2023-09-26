@@ -19,7 +19,8 @@ namespace E_Nak.Persistence.Context
         }
         #endregion
 
-        #region Field
+        #region Migration Table
+
         public DbSet<Company> Companies { get; set; }
         public DbSet<Individual> Individuals { get; set; }
         public DbSet<Drive> Drives { get; set; }
@@ -27,6 +28,8 @@ namespace E_Nak.Persistence.Context
         public DbSet<Transport> Transports { get; set; }
         public DbSet<Vehicles> Vehicles { get; set; }
         public DbSet<VehicleType> VehicleTypes { get; set; }
+
+        #endregion
 
     }
 }

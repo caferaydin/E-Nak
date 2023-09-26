@@ -1,4 +1,5 @@
-﻿using E_Nak.Domain.Entities.Vehicle;
+﻿using E_Nak.Domain.Entities.Base;
+using E_Nak.Domain.Entities.Vehicle;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace E_Nak.Domain.Entities.Transport
 {
-    public class Transport
+    public class Transport : BaseEntity
     {
         public VehicleType VehicleType { get; set; }
         public LoadType LoadType { get; set; }
