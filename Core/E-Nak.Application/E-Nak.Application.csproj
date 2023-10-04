@@ -15,4 +15,8 @@
     <ProjectReference Include="..\E-Nak.Domain\E-Nak.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstract\Auth\" />
+  </ItemGroup>
+
 </Project>

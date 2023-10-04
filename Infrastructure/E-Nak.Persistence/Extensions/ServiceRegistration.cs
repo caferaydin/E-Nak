@@ -18,12 +18,10 @@ namespace E_Nak.Persistence.Extensions
             services.AddDbContext<MsSqlDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
             services.AddSingleton<IVehicleService, VehicleService>();
 
-
             #region Repository
 
             services.AddScoped<IVehicleReadRepository, VehicleReadRepository>();
             services.AddScoped<IVehicleWriteRepository, VehicleWriteRepository>();
-
 
             #endregion
 

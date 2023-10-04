@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using E_Nak.Domain.Entities.Vehicle;
 
 namespace E_Nak.Application.Abstract
 {
     public interface IVehicleService
     {
-        List<IVehicleService> GetVehicles();
+        List<Vehicles> GetVehicles();
     }
 }
