@@ -1,6 +1,6 @@
-﻿using E_Nak.Application.Abstract;
-using E_Nak.Application.Abstract.Repositories.Read;
+﻿using E_Nak.Application.Abstract.Repositories.Read;
 using E_Nak.Application.Abstract.Repositories.Write;
+using E_Nak.Application.Abstract.Service;
 using E_Nak.Persistence.Concretes;
 using E_Nak.Persistence.Context;
 using E_Nak.Persistence.Repositories.Read;

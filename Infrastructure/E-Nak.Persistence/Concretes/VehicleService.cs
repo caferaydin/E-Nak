@@ -1,4 +1,4 @@
-﻿using E_Nak.Application.Abstract;
+﻿using E_Nak.Application.Abstract.Service;
 
 namespace E_Nak.Persistence.Concretes
 {

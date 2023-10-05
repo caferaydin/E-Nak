@@ -1,4 +1,4 @@
-﻿using E_Nak.Application.Abstract;
+﻿using E_Nak.Application.Abstract.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Nak.API.Controllers

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Nak.Application.Abstract
+namespace E_Nak.Application.Abstract.Service
 {
     public interface IIndividualService
     {
