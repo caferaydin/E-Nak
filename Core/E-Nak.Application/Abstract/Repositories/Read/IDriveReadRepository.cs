@@ -2,7 +2,7 @@
 
 namespace E_Nak.Application.Abstract.Repositories.Read
 {
-    public interface ICompanyReadRepository : IReadRepository<Company>
+    public interface IDriveReadRepository : IReadRepository<Drive>
     {
     }
 }

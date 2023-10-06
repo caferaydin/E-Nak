@@ -24,6 +24,8 @@ namespace E_Nak.Persistence.Context
         public DbSet<Vehicles> Vehicles { get; set; }
         public DbSet<VehicleType> VehicleTypes { get; set; }
 
+        public DbSet<PreliminaryOffers> PreliminaryOffers { get; set; }
+
         #endregion
 
     }

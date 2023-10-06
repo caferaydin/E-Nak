@@ -4,6 +4,6 @@ namespace E_Nak.Application.Abstract.Service
 {
     public interface IVehicleService
     {
-        List<Vehicles> GetVehicles();
+        IQueryable<Vehicles> GetVehicles();
     }
 }

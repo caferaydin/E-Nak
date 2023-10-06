@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace E_Nak.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_26092023 : Migration
+    public partial class mig_1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,9 +28,9 @@ namespace E_Nak.Persistence.Migrations
                     TaxNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BillingAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,9 +49,9 @@ namespace E_Nak.Persistence.Migrations
                     PhoneNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -65,13 +65,30 @@ namespace E_Nak.Persistence.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LoadTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PreliminaryOffers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AccountId = table.Column<int>(type: "int", nullable: false),
+                    OfferedPrice = table.Column<double>(type: "float", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PreliminaryOffers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -84,9 +101,9 @@ namespace E_Nak.Persistence.Migrations
                     FloorType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CaseType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MaximumLoad = table.Column<double>(type: "float", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -108,9 +125,9 @@ namespace E_Nak.Persistence.Migrations
                     PolicyNumber = table.Column<int>(type: "int", nullable: false),
                     LoadDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LoadDeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -143,9 +160,9 @@ namespace E_Nak.Persistence.Migrations
                     ChassisNumber = table.Column<int>(type: "int", nullable: false),
                     TypeId = table.Column<int>(type: "int", nullable: true),
                     DriveId = table.Column<int>(type: "int", nullable: true),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -207,9 +224,9 @@ namespace E_Nak.Persistence.Migrations
                     BillingAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     VehiclesId = table.Column<int>(type: "int", nullable: true),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -260,6 +277,9 @@ namespace E_Nak.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Individuals");
+
+            migrationBuilder.DropTable(
+                name: "PreliminaryOffers");
 
             migrationBuilder.DropTable(
                 name: "Transports");
