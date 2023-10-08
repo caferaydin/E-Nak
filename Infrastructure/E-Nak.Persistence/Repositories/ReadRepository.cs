@@ -19,17 +19,41 @@ namespace E_Nak.Persistence.Repositories
 
         public DbSet<T> Table => _context.Set<T>();
 
-        public IQueryable<T> GetAll()
-            => Table;
+        public IQueryable<T> GetAll(bool tracking = true)
+        {
+            var query = Table.AsQueryable();
+            if(!tracking)
+                query = Table.AsNoTracking();
 
-        public async Task<T> GetByIdAsync(int id)
-            => await Table.FirstOrDefaultAsync(data => data.Id == id);
+            return query;
+        }
 
-        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> filter)
-            => await Table.FirstOrDefaultAsync(filter);
+        public async Task<T> GetByIdAsync(int id, bool tracking = true)
+        {
+            var query = Table.AsQueryable();
+            if(!tracking)
+                query = Table.AsNoTracking();
 
-        public IQueryable<T> GetWhere(Expression<Func<T, bool>> filter)
-            => Table.Where(filter);
+            return await query.FirstOrDefaultAsync(data => data.Id == id);
+        }
+           
+
+        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> filter, bool tracking = true)
+        {
+            var query = Table.AsQueryable();
+            if (!tracking)
+                query.AsNoTracking();
+
+            return await query.FirstOrDefaultAsync(filter);
+        }
+
+        public IQueryable<T> GetWhere(Expression<Func<T, bool>> filter, bool tracking = true)
+        {
+            var query = Table.Where(filter);
+            if(!tracking)
+                query = Table.AsNoTracking();
+            return query;
+        } 
 
         #endregion
     }
