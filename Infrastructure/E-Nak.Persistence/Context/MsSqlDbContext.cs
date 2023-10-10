@@ -1,4 +1,5 @@
 ﻿using E_Nak.Domain.Entities.Account;
+using E_Nak.Domain.Entities.Base;
 using E_Nak.Domain.Entities.Transport;
 using E_Nak.Domain.Entities.Vehicle;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,7 @@ namespace E_Nak.Persistence.Context
         }
         #endregion
 
-        #region Migration Table
+        #region Table
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Individual> Individuals { get; set; }
@@ -26,6 +27,29 @@ namespace E_Nak.Persistence.Context
 
         public DbSet<PreliminaryOffers> PreliminaryOffers { get; set; }
 
+        #endregion
+
+        #region Interceptor
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var datas = ChangeTracker
+                        .Entries<BaseEntity>();
+            foreach (var data in datas)
+            {
+                _ = data.State switch
+                {
+                    EntityState.Added => data.Entity.CreatedAt = DateTime.UtcNow,
+                    EntityState.Modified => data.Entity.UpdatedAt = DateTime.UtcNow,
+                    EntityState.Deleted => data.Entity.DeletedAt = DateTime.UtcNow,
+
+                };
+                    
+            }
+                
+                
+            return base.SaveChangesAsync(cancellationToken);
+        }
         #endregion
 
     }
