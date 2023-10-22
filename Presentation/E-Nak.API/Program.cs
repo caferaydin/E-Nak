@@ -16,6 +16,16 @@ builder.Services.AddPersistenceService();
 
 #endregion
 
+#region Cors 
+
+builder.Services.AddCors(options => options.AddDefaultPolicy(policy => 
+    //policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()
+    policy.WithOrigins("https://localhost:4200", "https://localhost:4200").
+    AllowAnyHeader().AllowAnyMethod()
+    ));
+
+#endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +34,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// add 
+app.UseCors();
 
 app.UseHttpsRedirection();
 
