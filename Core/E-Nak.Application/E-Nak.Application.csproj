@@ -1,15 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>E_Nak.Application</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
+    <Compile Remove="ViewModel\Response\**" />
+    <EmbeddedResource Remove="ViewModel\Response\**" />
+    <None Remove="ViewModel\Response\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModel\Response\" />
+    <Folder Include="Abstract\Token\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Features\Queries\Account\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
 
 </Project>

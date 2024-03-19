@@ -4,7 +4,7 @@ namespace E_Nak.Persistence
 {
     static class Configuration
     {
-        static public string ConnectionString
+        static public string? ConnectionString
         {
             get
             {

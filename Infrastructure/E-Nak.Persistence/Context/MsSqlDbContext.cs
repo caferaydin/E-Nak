@@ -1,8 +1,8 @@
-﻿using E_Nak.Domain.Entities.Account;
-using E_Nak.Domain.Entities.Base;
-using E_Nak.Domain.Entities.Transport;
-using E_Nak.Domain.Entities.Vehicle;
+﻿using E_Nak.Domain.Common;
+using E_Nak.Domain.Entities.Account;
+using E_Nak.Domain.Entities.Datas.Transport;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace E_Nak.Persistence.Context
 {
@@ -17,15 +17,17 @@ namespace E_Nak.Persistence.Context
 
         #region Table
 
+        #region Account
+        public DbSet<Company> Producers { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Individual> Individuals { get; set; }
-        public DbSet<Drive> Drives { get; set; }
-        public DbSet<LoadType> LoadTypes { get; set; }
-        public DbSet<Transport> Transports { get; set; }
-        public DbSet<Vehicles> Vehicles { get; set; }
-        public DbSet<VehicleType> VehicleTypes { get; set; }
+        #endregion
 
-        public DbSet<PreliminaryOffers> PreliminaryOffers { get; set; }
+        #region Datas
+        //public DbSet<Transport> Transports { get; set; }
+
+        #endregion
+
 
         #endregion
 
@@ -44,11 +46,17 @@ namespace E_Nak.Persistence.Context
                     EntityState.Deleted => data.Entity.DeletedAt = DateTime.UtcNow,
 
                 };
-                    
+
             }
-                
-                
+
+
             return base.SaveChangesAsync(cancellationToken);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
         }
         #endregion
 
