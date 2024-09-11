@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace E_Nak.Persistence.Repositories
 {
-    public class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity
+    public class WriteRepository<T,Val> : IWriteRepository<T,Val> where T : BaseEntity<Val>
     {
-        readonly private MsSqlDbContext _context;
-        public WriteRepository(MsSqlDbContext context)
+        readonly private ENakDbContext _context;
+        public WriteRepository(ENakDbContext context)
         {
             _context = context;
         }
@@ -35,9 +35,9 @@ namespace E_Nak.Persistence.Repositories
             Table.RemoveRange(datas);
             return true;
         }
-        public async Task<bool> RemoveAsync(string id)
+        public async Task<bool> RemoveAsync(Val id)
         {
-            T model = await Table.FirstOrDefaultAsync(data => data.Id == Guid.Parse(id));
+            T model = await Table.FirstOrDefaultAsync(data => data.Id.ToString() == id.ToString());
             return Remove(model);
         }
         public bool Update(T model)

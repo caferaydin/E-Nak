@@ -6,10 +6,10 @@ using System.Linq.Expressions;
 
 namespace E_Nak.Persistence.Repositories
 {
-    public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity
+    public class ReadRepository<T, Val> : IReadRepository<T, Val> where T : BaseEntity<Val>
     {
-        private readonly MsSqlDbContext _context;
-        public ReadRepository(MsSqlDbContext context)
+        private readonly ENakDbContext _context;
+        public ReadRepository(ENakDbContext context)
         {
             _context = context;
         }
@@ -37,14 +37,14 @@ namespace E_Nak.Persistence.Repositories
                 query = Table.AsNoTracking();
             return await query.FirstOrDefaultAsync(method);
         }
-        public async Task<T> GetByIdAsync(string id, bool tracking = true)
+        public async Task<T> GetByIdAsync(Val id, bool tracking = true)
         //=> await Table.FirstOrDefaultAsync(data => data.Id == Guid.Parse(id));
         //=> await Table.FindAsync(Guid.Parse(id));
         {
             var query = Table.AsQueryable();
             if (!tracking)
                 query = Table.AsNoTracking();
-            return await query.FirstOrDefaultAsync(data => data.Id == Guid.Parse(id));
+            return await query.FirstOrDefaultAsync(data => data.Id.ToString() == id.ToString());
         }
 
     }

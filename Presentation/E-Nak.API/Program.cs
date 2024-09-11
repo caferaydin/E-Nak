@@ -15,7 +15,7 @@ builder.Services.AddHttpClient();
 
 #region Add Service Registration
 
-builder.Services.AddPersistenceService();
+builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationServices();
 
 #endregion

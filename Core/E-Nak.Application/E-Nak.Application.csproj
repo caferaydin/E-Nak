@@ -8,13 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ViewModel\Response\**" />
-    <EmbeddedResource Remove="ViewModel\Response\**" />
-    <None Remove="ViewModel\Response\**" />
+    <Compile Remove="DTOs\**" />
+    <Compile Remove="Features\Queries\Account\**" />
+    <Compile Remove="ViewModel\**" />
+    <EmbeddedResource Remove="DTOs\**" />
+    <EmbeddedResource Remove="Features\Queries\Account\**" />
+    <EmbeddedResource Remove="ViewModel\**" />
+    <None Remove="DTOs\**" />
+    <None Remove="Features\Queries\Account\**" />
+    <None Remove="ViewModel\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.9.2" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
@@ -25,12 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract\Token\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Features\Queries\Account\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="ViewModel\" />
+    <Folder Include="Mapping\" />
   </ItemGroup>
 
 </Project>
